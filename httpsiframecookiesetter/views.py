@@ -5,11 +5,13 @@ from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from django.core.urlresolvers import reverse
 from django.conf import settings as django_settings
+from django.views.decorators.clickjacking import xframe_options_exempt
 
 from .settings import HTTPS_IFRAME_COOKIESETTER_LOADING_GRAPHIC
 
 logger = logging.getLogger(__name__)
 
+@xframe_options_exempt
 def cookiesetter(request):
     quoted_absurl = request.GET.get('absurl', '/')
     absurl = urllib2.unquote(request.GET.get('absurl', '/'))

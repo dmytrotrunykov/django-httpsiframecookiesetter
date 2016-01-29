@@ -35,7 +35,7 @@ def urlpath():
 
 def check_cookie_present(request):
     #TODO we need to check the number of redirects in case we end up in a loop for some reason
-    if  HTTPS_IFRAME_COOKIESETTER_URL_TO_CHECK in request.path \
+    if  request.path.startswith(HTTPS_IFRAME_COOKIESETTER_URL_TO_CHECK) \
         and not ((settings.MEDIA_URL and request.path.startswith(settings.MEDIA_URL)) or request.path.startswith(settings.STATIC_URL)) \
         and (not HTTPS_IFRAME_COOKIESETTER_ONLY_HTTPS or(HTTPS_IFRAME_COOKIESETTER_ONLY_HTTPS and request.is_secure())) \
         and call_additional_checks():

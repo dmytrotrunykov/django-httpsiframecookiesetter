@@ -1,6 +1,7 @@
-from django.conf.urls import patterns, url
+from django.urls import re_path
+
 from .views import cookiesetter
 
-urlpatterns = patterns('',
-    url(r'$', cookiesetter, name='cookiesetter'),
-)
+urlpatterns = [
+    re_path(r'$', cookiesetter, name='cookiesetter'),
+]
